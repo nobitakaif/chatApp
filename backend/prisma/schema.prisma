@@ -17,7 +17,30 @@ datasource db {
 
 model User{
   id          String      @id     @default(uuid())
-  username    String      @unique
+  name        String      
   email       String      @unique
-  password    String
+  avatar      String?     @default("")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  clerkId     String      @unique
+  chat        Chat[]
+  message     Message[]
+}
+
+model Chat{
+  id              String     @id   @default(uuid())
+  userId          String
+  participiats    User @relation(references: [id], fields: [userId])
+  lastMessage     Message[]
+  lastMessageAt   DateTime @default(now())
+}
+
+model Message{
+  id           String     @id @default(uuid())
+  chatId       String
+  chat         Chat   @relation(references: [id], fields: [chatId])
+  userId       String
+  text         String
+  createdAt    DateTime @default(now())
+  sender       User @relation(references: [id], fields: [userId])
 }
