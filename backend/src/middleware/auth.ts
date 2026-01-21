@@ -9,19 +9,23 @@ export const protectRoute = [
     async(req:Request, res:Response, next:NextFunction)=>{
         try{
             const { userId } = getAuth(req)
-            if(!userId){
-                return res.status(401).json({
-                    message : "You're not Authorized"
-                })    
-            }
+            // if(!userId){
+            //     return res.status(401).json({
+            //         message : "You're not Authorized"
+            //     })    
+            // }
             const user = await prisma.user.findFirst({
                 where:{
                     clerkId : userId!
                 }
             })
             req.userId = user?.id 
+            next()
         }catch(e){
-
+            console.error("Error in protect Middleware", e)
+            res.status(500).json({
+                msg : "internal server error"
+            })
         }
     }
 ]

@@ -50,7 +50,7 @@ config.compilerWasm = {
 export type LogOptions<ClientOptions extends Prisma.PrismaClientOptions> =
   'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never
 
-export interface rPrismaClientConstructor {
+export interface PrismaClientConstructor {
     /**
    * ## Prisma Client
    * 
