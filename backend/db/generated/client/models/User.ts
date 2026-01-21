@@ -363,6 +363,16 @@ export type UserMinOrderByAggregateInput = {
   clerkId?: Prisma.SortOrder
 }
 
+export type UserListRelationFilter = {
+  every?: Prisma.UserWhereInput
+  some?: Prisma.UserWhereInput
+  none?: Prisma.UserWhereInput
+}
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
@@ -380,18 +390,42 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type UserCreateNestedOneWithoutChatInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatInput
-  connect?: Prisma.UserWhereUniqueInput
+export type UserCreateNestedManyWithoutChatInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput> | Prisma.UserCreateWithoutChatInput[] | Prisma.UserUncheckedCreateWithoutChatInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatInput | Prisma.UserCreateOrConnectWithoutChatInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUpdateOneRequiredWithoutChatNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatInput
-  upsert?: Prisma.UserUpsertWithoutChatInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChatInput, Prisma.UserUpdateWithoutChatInput>, Prisma.UserUncheckedUpdateWithoutChatInput>
+export type UserUncheckedCreateNestedManyWithoutChatInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput> | Prisma.UserCreateWithoutChatInput[] | Prisma.UserUncheckedCreateWithoutChatInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatInput | Prisma.UserCreateOrConnectWithoutChatInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUpdateManyWithoutChatNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput> | Prisma.UserCreateWithoutChatInput[] | Prisma.UserUncheckedCreateWithoutChatInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatInput | Prisma.UserCreateOrConnectWithoutChatInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutChatInput | Prisma.UserUpsertWithWhereUniqueWithoutChatInput[]
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutChatInput | Prisma.UserUpdateWithWhereUniqueWithoutChatInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutChatInput | Prisma.UserUpdateManyWithWhereWithoutChatInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutChatNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput> | Prisma.UserCreateWithoutChatInput[] | Prisma.UserUncheckedCreateWithoutChatInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatInput | Prisma.UserCreateOrConnectWithoutChatInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutChatInput | Prisma.UserUpsertWithWhereUniqueWithoutChatInput[]
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutChatInput | Prisma.UserUpdateWithWhereUniqueWithoutChatInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutChatInput | Prisma.UserUpdateManyWithWhereWithoutChatInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
 export type UserCreateNestedOneWithoutMessageInput = {
@@ -435,37 +469,33 @@ export type UserCreateOrConnectWithoutChatInput = {
   create: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput>
 }
 
-export type UserUpsertWithoutChatInput = {
+export type UserUpsertWithWhereUniqueWithoutChatInput = {
+  where: Prisma.UserWhereUniqueInput
   update: Prisma.XOR<Prisma.UserUpdateWithoutChatInput, Prisma.UserUncheckedUpdateWithoutChatInput>
   create: Prisma.XOR<Prisma.UserCreateWithoutChatInput, Prisma.UserUncheckedCreateWithoutChatInput>
-  where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutChatInput = {
-  where?: Prisma.UserWhereInput
+export type UserUpdateWithWhereUniqueWithoutChatInput = {
+  where: Prisma.UserWhereUniqueInput
   data: Prisma.XOR<Prisma.UserUpdateWithoutChatInput, Prisma.UserUncheckedUpdateWithoutChatInput>
 }
 
-export type UserUpdateWithoutChatInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
-  message?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+export type UserUpdateManyWithWhereWithoutChatInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutChatInput>
 }
 
-export type UserUncheckedUpdateWithoutChatInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
-  message?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+export type UserScalarWhereInput = {
+  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  OR?: Prisma.UserScalarWhereInput[]
+  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  id?: Prisma.StringFilter<"User"> | string
+  name?: Prisma.StringFilter<"User"> | string
+  email?: Prisma.StringFilter<"User"> | string
+  avatar?: Prisma.StringNullableFilter<"User"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  clerkId?: Prisma.StringFilter<"User"> | string
 }
 
 export type UserCreateWithoutMessageInput = {
@@ -526,6 +556,38 @@ export type UserUncheckedUpdateWithoutMessageInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   chat?: Prisma.ChatUncheckedUpdateManyWithoutParticipiatsNestedInput
+}
+
+export type UserUpdateWithoutChatInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  message?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateWithoutChatInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  message?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutChatInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 

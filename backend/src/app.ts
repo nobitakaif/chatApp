@@ -15,7 +15,7 @@ app.get("/server-up",async (req,res)=>{
 })
 
 app.use("/api/auth", authRoutes)
-app.use("/api/chat", chatRouter)
+app.use("/api/chats", chatRouter)
 app.use("/api/messages", messagesRoutes)
 app.use("/api/user", userRoutes)
 
