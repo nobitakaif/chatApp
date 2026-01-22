@@ -29,7 +29,6 @@ model User{
 
 model Chat{
   id              String     @id   @default(uuid())
-  userId          String
   participiats    User[] @relation("ChartParticipiant")
   lastMessage     Message[]
   lastMessageAt   DateTime @default(now())
