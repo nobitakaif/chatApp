@@ -1,0 +1,53 @@
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons"
+
+export default function  TabsLayout () {
+    return (
+        <Tabs
+            screenOptions={{
+                headerShown : false,
+                tabBarStyle :{
+                    backgroundColor : "#0d0d0f",
+                    borderTopColor : "#1a1a1d",
+                    borderTopWidth : 1,
+                    height : 88, 
+                    padding : 8
+                },
+                
+                tabBarActiveTintColor  : "#f4a261",
+                tabBarInactiveTintColor : "#6b6b70",
+                tabBarLabelStyle : {
+                    fontSize : 12, 
+                    fontWeight : "600"
+                }
+            }}
+        >
+            <Tabs.Screen name="index" options={{
+                title : "Chat",
+                tabBarIcon : ({color, focused, size})=>(
+                     <Ionicons 
+                        name={focused ? "chatbubbles" : "chatbubbles-outline"}
+                        size = {size} 
+                        color = {color}
+                    />
+                )
+            }}/>
+            
+            <Tabs.Screen name="profile"
+                options={{
+                    title : "Profile",
+                    tabBarIcon : ({color, focused, size})=>(
+                        <Ionicons 
+                            name={focused ? "person" : "person-outline"}
+                            size={size}
+                            color={color}
+                        />
+                    )
+                }}
+            />
+        </Tabs>
+
+    )
+}
+
+// export default TabsLayout

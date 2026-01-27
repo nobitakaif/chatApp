@@ -14,6 +14,8 @@
     ".expo/types/**/*.ts",
     "expo-env.d.js",
     "metro.config.js",
-    "nativewind-env.d.ts"
-, "babel.config.js"  ]
+    "nativewind-env.d.ts",
+    "babel.config.js",
+    "expo-env.d.ts"
+  ]
 }
