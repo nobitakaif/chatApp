@@ -1,12 +1,16 @@
 import { Image } from "expo-image";
-import { Dimensions, Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Dimensions, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import "../../global.css"
 import { Ionicons } from "@expo/vector-icons";
+import useAuthSocial from "hooks/useSocial";
 
 
 const { width, height } = Dimensions.get("window")
 export default function Profile(){
+    
+    const {hanleSocailAuth, loadingStrategy} = useAuthSocial()
+    
     
     return <View className="bg-surface-dark flex-1">
         <View className="absolute inset-0 overflow-hidden">
@@ -38,13 +42,39 @@ export default function Profile(){
                         </Text>
                     </View>
                     <View className="flex-row gap-4 mt-10">
-                        <Pressable className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 py-4 rounded-2xl active:scale-[0.98]">
-                            <Image source={require("../../assets/google.png")} style={{width : 20, height : 20}} contentFit="cover"/>
-                            <Text className="font-bold text-xl">Google</Text>
+                        <Pressable className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 py-4 rounded-2xl active:scale-[0.98]"  
+                            disabled = {loadingStrategy === "oauth_google"}
+                            onPress={()=>{
+                                hanleSocailAuth("oauth_google")
+                            }}
+                        >
+                            {
+                                loadingStrategy === "oauth_google" ? (
+                                    <ActivityIndicator size={"small"} color={"black"}/>
+                                ) : (
+                                    <>
+                                        <Image source={require("../../assets/google.png")} style={{width : 20, height : 20}} contentFit="cover"/>
+                                        <Text className="font-bold text-xl">Google</Text>
+                                    </>
+                                )
+                            }
                         </Pressable>
-                        <Pressable className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 py-4 rounded-2xl active:scale-[0.98]">
-                            <Ionicons name="logo-apple" size={20} color={"#fffff"}/>
-                            <Text className="font-bold text-xl">Apple</Text>
+                        <Pressable className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 py-4 rounded-2xl active:scale-[0.98]" 
+                            disabled = {loadingStrategy === "oauth_apple"}
+                            onPress={()=>{
+                                hanleSocailAuth("oauth_apple")
+                            }}
+                        >
+                            {
+                                loadingStrategy === "oauth_apple" ? (
+                                    <ActivityIndicator size={"small"} color={"black"}/>
+                                ) : (
+                                    <>
+                                        <Ionicons name="logo-apple" size={20} color={"#fffff"}/>
+                                        <Text className="font-bold text-xl">Apple</Text>
+                                    </>
+                                )
+                            }
                         </Pressable>
                     </View>
                 </View>
