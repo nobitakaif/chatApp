@@ -9,8 +9,9 @@ import useAuthSocial from "hooks/useSocial";
 const { width, height } = Dimensions.get("window")
 export default function Profile(){
     
-    const {hanleSocailAuth, loadingStrategy} = useAuthSocial()
-    
+    const {handleSocailAuth, loadingStrategy} = useAuthSocial()
+
+    const isLoading = loadingStrategy !== null
     
     return <View className="bg-surface-dark flex-1">
         <View className="absolute inset-0 overflow-hidden">
@@ -43,10 +44,10 @@ export default function Profile(){
                     </View>
                     <View className="flex-row gap-4 mt-10">
                         <Pressable className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 py-4 rounded-2xl active:scale-[0.98]"  
-                            disabled = {loadingStrategy === "oauth_google"}
-                            onPress={()=>{
-                                hanleSocailAuth("oauth_google")
-                            }}
+                            disabled={isLoading}
+                            accessibilityRole="button"
+                            accessibilityLabel="Continue with Goolge"
+                            onPress={()=>!isLoading && handleSocailAuth("oauth_google")}
                         >
                             {
                                 loadingStrategy === "oauth_google" ? (
@@ -60,10 +61,10 @@ export default function Profile(){
                             }
                         </Pressable>
                         <Pressable className="flex-1 flex-row items-center justify-center gap-2 bg-white/95 py-4 rounded-2xl active:scale-[0.98]" 
-                            disabled = {loadingStrategy === "oauth_apple"}
-                            onPress={()=>{
-                                hanleSocailAuth("oauth_apple")
-                            }}
+                            disabled={isLoading}
+                            accessibilityLabel="Continue with Apple"
+                            accessibilityRole="button"
+                            onPress={()=> !isLoading && handleSocailAuth("oauth_apple")}
                         >
                             {
                                 loadingStrategy === "oauth_apple" ? (

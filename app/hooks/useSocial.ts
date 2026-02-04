@@ -6,8 +6,10 @@ import { Alert } from "react-native";
 export default function useAuthSocial(){
     const [ loadingStrategy, setLoadingStrategy] = useState<string | null>(null)
     const { startSSOFlow } = useSSO()
-    const hanleSocailAuth  = async (strategy : "oauth_google" | "oauth_apple") =>{
+    const handleSocailAuth  = async (strategy : "oauth_google" | "oauth_apple") =>{
+        if(loadingStrategy) return 
         setLoadingStrategy(strategy)
+        
         try{
             const { createdSessionId, setActive } = await startSSOFlow({strategy});
             if(createdSessionId && setActive){
@@ -21,6 +23,6 @@ export default function useAuthSocial(){
             setLoadingStrategy(null)
         }
     }
-    return {hanleSocailAuth, loadingStrategy}
+    return {handleSocailAuth, loadingStrategy}
 }
 
